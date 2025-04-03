@@ -1,0 +1,82 @@
+
+/** Reveal **/
+
+.reveal h1 {
+  font-size: 42pt;
+  padding: 0.5%;
+}
+
+.reveal  h2 {
+  font-size: 32pt;
+}
+
+.reveal small {
+  font-size: 24pt;
+}
+
+.reveal p {
+  font-size: 32pt;
+  line-height: 50%;
+  padding: 0!important;
+}
+
+.reveal .slide-number {
+  right: 8px;
+  top: 8px;
+  bottom: auto;
+  font-size: 24pt;
+}
+
+.reveal .controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Remove top and bottom control arrows */
+.reveal .controls .navigate-down, .reveal .controls .navigate-up {
+  display: none;
+}
+
+/* Remove image border and shadows*/
+.reveal section img {
+  background:none;
+  border:none;
+  box-shadow:none;
+}
+
+/** Logo **/
+
+#logo-div {
+  top: 89%;
+  left: 2%;
+  position: fixed;
+}
+
+.logo {
+  height: 8vh;
+}
+
+/** Reference **/
+
+.reference {
+  color: gray;
+  top: 100%;
+  left: 5%;
+  position: absolute;
+}
+
+/** Formats **/
+
+.format a:link, a:visited, a:active {
+  color: black;
+  font-size: 18pt;
+  outline: 0;
+}
+
+/** Custom **/
+
+.background-text {
+  color: white;
+  text-shadow: 0 1px 0 black;
+}

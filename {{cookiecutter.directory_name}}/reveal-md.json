@@ -1,0 +1,6 @@
+{
+    "scripts": "lib/mermaid.min.js,lib/reveal-mermaid.js",
+    "css": "slides/template_extra.css",
+    "template": "slides/template.html",
+    "highlightTheme": "github"
+}
