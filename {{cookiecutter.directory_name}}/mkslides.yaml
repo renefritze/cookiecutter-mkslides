@@ -1,0 +1,10 @@
+# mkslides configuration file
+theme: default
+transition: slide
+highlightTheme: monokai
+controls: true
+progress: true
+history: true
+center: true
+slideNumber: true
+assets_dir: assets

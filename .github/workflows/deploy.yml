@@ -2,32 +2,24 @@ on:
   push:
     branches:
       - "main"
-
 name: Deploy
-
 permissions:
   contents: write
-
 jobs:
-
   deploy:
     runs-on: ubuntu-latest
     name: build and upload
     steps:
-      # Checkout the source code so we have some files to look at.
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '16'
       - uses: astral-sh/setup-uv@v5
       - name: Install dependencies
         run: |
-            python -m pip install cookiecutter build pre-commit
-            git config --global user.email "rene.fritze@wwu.de"
-            git config --global user.name "René Fritze"
-            git config --global init.defaultBranch main
+          uv sync --frozen
+          git config --global user.email "rene.fritze@wwu.de"
+          git config --global user.name "René Fritze"
+          git config --global init.defaultBranch main
       - name: Render cookiecutter
-        run: cookiecutter -v --no-input -f -o /tmp/ . directory_name=cookie_reveal
+        run: uv run cookiecutter -v --no-input -f -o /tmp/ . directory_name=cookie_reveal
       - run: make -C /tmp/cookie_reveal install
       - run: make -C /tmp/cookie_reveal html
       - run: make -C /tmp/cookie_reveal pdf

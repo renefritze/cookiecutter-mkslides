@@ -1,0 +1,13 @@
+line_ending: lf
+formatter:
+  eof_newline: true
+  include_document_start: true
+  indent: 2
+  indentless_arrays: true
+  max_line_length: 119
+  pad_line_comments: 2
+  retain_line_breaks: true
+  retain_line_breaks_single: true
+  scan_folded_as_literal: true
+  trim_trailing_whitespace: true
+  type: basic

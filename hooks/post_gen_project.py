@@ -14,6 +14,12 @@ def _precommit():
 
     main.main(["install"])
     main.main(["run", "-a"])
+    main.main(["run", "-a"])
+    try:
+        subprocess.check_output(["git", "add", "-au"])
+        subprocess.check_output(["git", "commit", "--amend", "--no-edit"])
+    except subprocess.CalledProcessError:
+        pass
 
 
 def _git_init():
@@ -27,6 +33,7 @@ def _git_init():
     try:
         subprocess.check_output(["git", "commit", "-m", "initial commit"])
     except subprocess.CalledProcessError:
+        subprocess.check_output(["git", "add", ".pre-commit-config.yaml"])
         subprocess.run(["git", "commit", "-m", "initial commit", "--no-verify"])
     return True
 
