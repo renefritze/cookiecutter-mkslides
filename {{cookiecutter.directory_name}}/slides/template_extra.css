@@ -1,0 +1,18 @@
+.footnote {
+  font-size: 9pt;
+}
+.container {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+.col {
+  flex: 1;
+}
+
+:root {
+  --r-heading1-size: 2.0em;
+  --r-heading2-size: 1.4em;
+  --r-heading3-size: 1.1em;
+  --r-heading4-size: 1em;
+}

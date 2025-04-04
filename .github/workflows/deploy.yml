@@ -1,0 +1,34 @@
+on:
+  push:
+    branches:
+      - "main"
+name: Deploy
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: build and upload
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install dependencies
+        run: |
+          uv sync --frozen
+          git config --global user.email "rene.fritze@wwu.de"
+          git config --global user.name "René Fritze"
+          git config --global init.defaultBranch main
+      - name: Render cookiecutter
+        run: uv run cookiecutter -v --no-input -f -o /tmp/ . directory_name=cookie_reveal
+      - run: make -C /tmp/cookie_reveal install
+      - run: make -C /tmp/cookie_reveal html
+      - run: make -C /tmp/cookie_reveal pdf
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: /tmp/cookie_reveal/static_html/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pdf-slides
+          path: -C /tmp/cookie_reveal/slides/*pdf

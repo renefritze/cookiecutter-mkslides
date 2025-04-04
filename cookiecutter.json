@@ -1,0 +1,28 @@
+{
+    "author": "Ren\u00e9 Fritze",
+    "email": "rene.fritze@arup.com",
+    "affiliation": "Core Capabilities Software QA",
+    "date": "{% now 'utc', '%B %d, %Y' %}",
+    "title": "Eat more Cookies!",
+    "description": "International Cookie Conference 2063",
+    "sections": "Introduction,Results,References",
+    "directory_name": "directory_name",
+    "repository_description": "repository_description",
+    "file_short": "{{cookiecutter.directory_name.replace(' ', '').replace('-','').lower()}}",
+    "file_name": "{{cookiecutter.author.split(' ')[-1].lower()}}{% now 'utc', '%Y' %}_{{cookiecutter.file_short}}_slides",
+    "github_user": "renefritze",
+    "github_url": "{{'https://github.com/' + cookiecutter.github_user + '/' + cookiecutter.directory_name}}",
+    "github_short": "{{cookiecutter.github_user + '/' + cookiecutter.directory_name}}",
+    "reveal_static": "static_html",
+    "reveal_theme": "white",
+    "reveal_controls": "true",
+    "reveal_slideNumber": "true",
+    "reveal_transition": "slide",
+    "reveal_pdf_size": "1920x1080",
+    "create_git_repository": "yes",
+    "_copy_without_render": [
+        "slides/template.html",
+        "package-lock.json",
+        ".github/*"
+    ]
+}

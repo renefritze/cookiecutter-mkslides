@@ -1,0 +1,11 @@
+{
+    "__comment__": "https://github.com/tcort/markdown-link-check#config-file-format",
+    "ignorePatterns": [
+        {
+            "pattern": "^https://community.chocolatey.org/packages/choco-upgrade-all-at"
+        },
+        {
+            "pattern": "^https://github.com/arup-group"
+        }
+    ]
+}

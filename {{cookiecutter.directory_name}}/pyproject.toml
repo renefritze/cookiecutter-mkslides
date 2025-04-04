@@ -1,0 +1,10 @@
+[project]
+name = "{{cookiecutter.directory_name}}-slides"
+version = "0.1.0"
+description = "Slides for {{cookiecutter.directory_name}}"
+requires-python = ">=3.12"
+dependencies = [
+    "mkslides",
+    "qrcode==8.0",
+    "pillow"
+]

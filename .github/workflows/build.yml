@@ -1,0 +1,38 @@
+name: build
+on: [pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '16'
+      - uses: astral-sh/setup-uv@v5
+      - name: Install dependencies
+        run: |
+          python -m pip install cookiecutter build
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
+          git config --global init.defaultBranch main
+      - name: with neither git nor pre-commit
+        run: |
+          GIT=$(which git)
+          sudo chmod -x ${GIT}
+          cookiecutter -v --no-input -f -o /tmp/cookie_reveal . directory_name=foo1
+          make -C /tmp/cookie_reveal/foo1 install
+          make -C /tmp/cookie_reveal/foo1
+          sudo chmod +x ${GIT}
+      - name: with git only
+        run: |
+          cookiecutter -v --no-input -f -o /tmp/cookie_reveal . directory_name=foo2
+          make -C /tmp/cookie_reveal/foo2 install
+          make -C /tmp/cookie_reveal/foo2
+      - name: with git and pre-commit
+        run: |
+          python -m pip install pre-commit
+          cookiecutter -v --no-input -f -o /tmp/cookie_reveal . directory_name=foo3
+          make -C /tmp/cookie_reveal/foo3 install
+          make -C /tmp/cookie_reveal/foo3
+          make -C /tmp/cookie_reveal/foo3 clean
+          make -C /tmp/cookie_reveal/foo3 pdf
