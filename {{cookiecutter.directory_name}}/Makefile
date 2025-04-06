@@ -1,5 +1,5 @@
 SHELL = /bin/bash
-PHONY: .FORCE
+.PHONY: .FORCE html pdf watch clean install
 
 .DEFAULT_GOAL := html
 
@@ -19,9 +19,9 @@ install: uv.lock .FORCE
 
 html: static_html/index.html
 
-pdf:
-	# This target is a placeholder for generating PDF slides.
-	@echo "PDF generation is not implemented yet."
+pdf: static_html/index.html
+	@mkdir -p slides
+	uv run html_to_pdf.py static_html/index.html slides/{{cookiecutter.file_name}}.pdf
 
 watch: .FORCE
 	uv run mkslides serve slides/{{cookiecutter.file_name}}.md

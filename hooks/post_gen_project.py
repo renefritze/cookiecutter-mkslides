@@ -6,17 +6,20 @@ import subprocess
 
 
 def _precommit():
-    try:
-        from pre_commit import main
-    except ImportError:
-        print("Please install pre-commit")
-        return
 
-    main.main(["install"])
-    main.main(["run", "-a"])
-    main.main(["run", "-a"])
+    subprocess.check_output(["uv", "run", "pre-commit", "install"])
+    # first time can have failure due to formatting
+    subprocess.run(["uv", "run", "pre-commit", "run", "-a"])
+    subprocess.check_output(["uv", "run", "pre-commit", "run", "-a"])
     try:
-        subprocess.check_output(["git", "add", "-au"])
+        subprocess.check_output(["git", "add", "-u"])
+        subprocess.check_output(
+            [
+                "git",
+                "add",
+                "uv.lock",
+            ]
+        )
         subprocess.check_output(["git", "commit", "--amend", "--no-edit"])
     except subprocess.CalledProcessError:
         pass
@@ -44,9 +47,14 @@ def _install():
 
 
 if __name__ == "__main__":
+
     if "{{ cookiecutter.create_git_repository|lower }}" != "yes":
         sys.exit(0)
 
-    if _git_init():
-        _precommit()
+    git_init_done = _git_init()
+
     _install()
+
+    if git_init_done:
+        _precommit()
+        print("Pre-commit hooks installed and run successfully.")

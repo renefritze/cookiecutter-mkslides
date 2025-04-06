@@ -22,7 +22,8 @@
     "create_git_repository": "yes",
     "_copy_without_render": [
         "slides/template.html",
-        "package-lock.json",
+        "uv.lock",
+        "html_to_pdf.py",
         ".github/*"
     ]
 }

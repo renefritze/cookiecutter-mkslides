@@ -6,5 +6,6 @@ requires-python = ">=3.12"
 dependencies = [
     "mkslides",
     "qrcode==8.0",
-    "pillow"
+    "pillow",
+    "weasyprint"
 ]
