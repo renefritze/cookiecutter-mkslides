@@ -1,5 +1,5 @@
 SHELL = /bin/bash
-PHONY: .FORCE
+.PHONY: .FORCE html pdf watch clean install install-browsers
 
 .DEFAULT_GOAL := html
 
@@ -17,11 +17,14 @@ uv.lock:
 install: uv.lock .FORCE
 	uv sync --frozen
 
+install-browsers: .FORCE
+	uv run -m playwright install chromium
+
 html: static_html/index.html
 
-pdf:
-	# This target is a placeholder for generating PDF slides.
-	@echo "PDF generation is not implemented yet."
+pdf: static_html/index.html install-browsers
+	@mkdir -p slides
+	uv run html_to_pdf.py static_html/index.html slides/{{cookiecutter.file_name}}.pdf
 
 watch: .FORCE
 	uv run mkslides serve slides/{{cookiecutter.file_name}}.md

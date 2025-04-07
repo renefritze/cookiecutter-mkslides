@@ -1,3 +1,4 @@
+---
 on: pull_request
 name: Build
 jobs:
@@ -5,8 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     name: build
     steps:
-      - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v5
-      - run: make install
-      - run: make html
-      - run: make pdf
+    - uses: actions/checkout@v4
+    - uses: astral-sh/setup-uv@v5
+    - run: make install
+    - run: make html
+    - run: make pdf

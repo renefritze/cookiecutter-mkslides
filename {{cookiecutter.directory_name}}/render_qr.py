@@ -6,8 +6,10 @@
 # ]
 # ///
 import qrcode
-from qrcode.image.styledpil import StyledPilImage
-from qrcode.image.styles.colormasks import RadialGradiantColorMask
+
+# for a fancy loook try these
+# from qrcode.image.styledpil import StyledPilImage
+# from qrcode.image.styles.colormasks import RadialGradiantColorMask
 
 
 def make_link(url: str, filename: str) -> None:
