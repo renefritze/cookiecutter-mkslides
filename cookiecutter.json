@@ -22,7 +22,6 @@
     "create_git_repository": "yes",
     "_copy_without_render": [
         "slides/template.html",
-        "uv.lock",
         "html_to_pdf.py",
         ".github/*"
     ]
