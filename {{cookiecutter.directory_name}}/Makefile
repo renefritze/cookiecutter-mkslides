@@ -6,10 +6,10 @@ SHELL = /bin/bash
 .FORCE:
 
 static_html/index.html: install .FORCE slides/{{cookiecutter.file_name}}.md slides/qr_self.png
-	uv run mkslides build slides/{{cookiecutter.file_name}}.md -d static_html
+	uv run mkslides build slides/{{cookiecutter.file_name}}.md -s -d static_html
 
 slides/{{cookiecutter.file_name}}.pdf: install static_html/index.html install
-	uv run mkslides pdf slides/{{cookiecutter.file_name}}.md -d slides/{{cookiecutter.file_name}}.pdf
+	uv run mkslides pdf slides/{{cookiecutter.file_name}}.md -s -d slides/{{cookiecutter.file_name}}.pdf
 
 uv.lock:
 	uv lock
@@ -24,7 +24,7 @@ html: static_html/index.html
 
 pdf: static_html/index.html install-browsers
 	@mkdir -p slides
-	uv run html_to_pdf.py static_html/index.html slides/{{cookiecutter.file_name}}.pdf
+	uv run html_to_pdf.py slides/{{cookiecutter.file_name}}.md slides/{{cookiecutter.file_name}}.pdf
 
 watch: .FORCE
 	uv run mkslides serve slides/{{cookiecutter.file_name}}.md
