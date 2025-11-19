@@ -3,12 +3,14 @@ name = "{{cookiecutter.directory_name}}-slides"
 version = "0.1.0"
 description = "Slides for {{cookiecutter.directory_name}}"
 requires-python = ">=3.12"
+version = "0.2.0"
+requires-python = ">=3.13"
 dependencies = [
-    "mkslides<2.0.0",
-    "qrcode<9.0",
-    "pillow<12.0.0",
-    "playwright<1.55.0",
-    "PyPDF2<4.0.0",
+    "mkslides",
+    "qrcode",
+    "pillow",
+    "playwright",
+    "PyPDF2",
     "pre-commit",
     "portend"
 ]
