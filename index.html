@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,13 +8,13 @@
 
         
 
-        <link rel="stylesheet" href="assets/reveal-js/dist/reveal.css" />
+        <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/reveal.css" />
 
         
-            <link rel="stylesheet" href="assets/black.css" />
+            <link rel="stylesheet" href="mkslides-assets/reveal-js/dist/theme/black.css" />
         
         
-            <link rel="stylesheet" href="assets/monokai.css" />
+            <link rel="stylesheet" href="mkslides-assets/highlight-js-themes/monokai.css" />
         
 
         
@@ -23,8 +25,9 @@
                 <section data-markdown
                 
                 >
+                    <!-- The markdown must be placed to the whole left to prevent indentation issues like https://github.com/MartenBE/mkslides/issues/52 -->
                     <textarea data-template>
-                        # Eat more Cookies!
+# Eat more Cookies!
 
 <small>René Fritze</small>
 
@@ -32,7 +35,7 @@
 
 <small>Core Capabilities Software QA</small>
 
-<small>April 07, 2025</small>
+<small>November 21, 2025</small>
 
 <small>*International Cookie Conference 2063*</small>
 
@@ -90,12 +93,13 @@ graph TD;
                 </section>
             </div>
         </div>
-        <script src="assets/reveal-js/dist/reveal.js"></script>
-        <script src="assets/reveal-js/plugin/markdown/markdown.js"></script>
-        <script src="assets/reveal-js/plugin/highlight/highlight.js"></script>
-        <script src="assets/reveal-js/plugin/zoom/zoom.js"></script>
-        <script src="assets/reveal-js/plugin/notes/notes.js"></script>
-        <script src="assets/reveal-js/plugin/math/math.js"></script>
+        <script src="mkslides-assets/reveal-js/dist/reveal.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/highlight/highlight.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/markdown/markdown.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/math/math.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/notes/notes.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/search/search.js"></script>
+        <script src="mkslides-assets/reveal-js/plugin/zoom/zoom.js"></script>
 
         
 
@@ -109,11 +113,12 @@ graph TD;
                     
                 
                 plugins: [
-                    RevealMarkdown,
+                    RevealMarkdown, // Must come before the other plugins so they can hook into the generated HTML.
                     RevealHighlight,
-                    RevealZoom,
+                    RevealMath.KaTeX,
                     RevealNotes,
-                    RevealMath,
+                    RevealSearch,
+                    RevealZoom,
 
                     
                 ],
