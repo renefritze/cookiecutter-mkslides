@@ -88,7 +88,7 @@ wheels = [
 ]
 
 [[package]]
-name = "fjreio"
+name = "{{cookiecutter.directory_name}}-slides"
 version = "0.2.0"
 source = { virtual = "." }
 dependencies = [
